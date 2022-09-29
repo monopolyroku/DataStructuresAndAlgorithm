@@ -19,12 +19,13 @@
         Remove the front element in the array.
     - remove_back
         Remove the back element in the array.
-    - display
-        Displays the array elements.
+    - peek
+        Retrieve a specific element in the array.
 ****************************************************************************
 ***/
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 /*!*************************************************************************
 ****
@@ -139,27 +140,16 @@ void remove_back(Array *array) {
 /*!*************************************************************************
 ****
 \brief
-	A function to display the array elements.
+	A function to retrieve a specific element in the array..
 
 \param array
 	The pointer to the array struct.
+\param pos
+	The position of the array element in the array.
 ****************************************************************************
 ***/
-void display(Array *array) {
-    printf("Display array elements:\n");
-    if(array->size != 0) {
-        for(size_t i=0; i<array->size; ++i) {
-            // Need to convert fpos data type to unsigned char so that it can
-            // calculate the exact index of the element that it is printing.
-            printf("%d ", array->data[(unsigned char)(array->fpos+i)]);
-        }
-    }
-    else {
-        printf("Array is empty!\n");
-    }
-    printf("\n");
-    // number of elements in the array
-    printf("Size of array: %ld\n\n", array->size);
+void peek(Array *array, int pos) {
+    printf(" %d |", array->data[(unsigned char)(array->fpos+pos)]);
 }
 
 int main(void) {
@@ -175,11 +165,27 @@ int main(void) {
     // User input
     int loopCnt = 0, val = 0, mode = 1, modeChck = false, action = 0;
     while(mode != 3) {
+        // Clear output screen/ terminal
+        system("clear");
         if(modeChck == true) {
-            printf("Please choose one of the following actions (e.g.: 1): \n");
-            printf("1) Insert array elements.\n");
-            printf("2) Remove array elements.\n");
-            printf("3) Exit program...\n");
+            printf("---------------\n");
+            printf("USER INPUT MODE\n");
+            printf("---------------\n");
+            printf("1 - Insert array elements.\n");
+            printf("2 - Remove array elements.\n");
+            printf("3 - Exit program...\n");
+            printf("DISPLAY ARRAY:\n");
+            printf("Index:      |");
+            for(int i=0; i<(int)arr.size; ++i) {
+                printf(" %d |", i);
+            }
+            printf("\n");
+            printf("Element(s): |");
+            // Display array list
+            for(int i=0; i<(int)arr.size; ++i) {
+                peek(&arr, i);
+            }
+            printf("\nPlease choose one of the above actions (e.g.: 1): \n");
             scanf("%d", &mode);
         }
         else {
@@ -187,59 +193,45 @@ int main(void) {
         }
         switch(mode) {
             case 1:
-                printf("Enter number of integers to insert: \n");
-                scanf("%d", &loopCnt);
+                printf("Enter an integer to insert into the array:\n");
+                scanf("%d", &val);
                 printf("Do you want to insert to the front or back of the array?\n");
-                printf("1) Front\n");
-                printf("2) Back\n");
+                printf("1 - Front\n");
+                printf("2 - Back\n");
                 scanf("%d", &action);
+                while (action < 1 || action > 2) {
+                    scanf("%d", &action);
+                }
                 if(1 == action) {
-                    printf("---------------------\n");
-                    printf("Test for insert front\n");
-                    printf("---------------------\n");
-                    printf("Enter %d integers: \n", loopCnt);
-                    for(int i=0; i<loopCnt; ++i) {
-                        scanf("%d", &val);
-                        insert_front(&arr, val);
-                    }
+                    insert_front(&arr, val);
                 }
-                else {
-                    printf("---------------------\n");
-                    printf("Test for insert back\n");
-                    printf("---------------------\n");
-                    printf("Enter %d integers: \n", loopCnt);
-                    for(int i=0; i<loopCnt; ++i) {
-                        scanf("%d", &val);
-                        insert_back(&arr, val);
-                    }
+                else if(2 == action) {
+                    insert_back(&arr, val);
                 }
-                display(&arr);
                 modeChck = true;
                 break;
             case 2:
-                printf("Enter number of integers to remove: \n");
-                scanf("%d", &loopCnt);
-                printf("Do you want to remove from the front or back of the array?\n");
-                printf("1) Front\n");
-                printf("2) Back\n");
-                scanf("%d", &action);
-                if(1 == action) {
-                    printf("---------------------\n");
-                    printf("Test for remove front\n");
-                    printf("---------------------\n");
-                    for(int i=0; i<loopCnt; ++i) {
-                        remove_front(&arr);
+                if(arr.size > 0) {
+                    printf("Enter number of integers to remove: \n");
+                    scanf("%d", &loopCnt);
+                    printf("Do you want to remove from the front or back of the array?\n");
+                    printf("1) Front\n");
+                    printf("2) Back\n");
+                    scanf("%d", &action);
+                    while (action < 1 || action > 2) {
+                        scanf("%d", &action);
+                    }
+                    if(1 == action) {
+                        for(int i=0; i<loopCnt; ++i) {
+                            remove_front(&arr);
+                        }
+                    }
+                    else {
+                        for(int i=0; i<loopCnt; ++i) {
+                            remove_back(&arr);
+                        }
                     }
                 }
-                else {
-                    printf("---------------------\n");
-                    printf("Test for remove back\n");
-                    printf("---------------------\n");
-                    for(int i=0; i<loopCnt; ++i) {
-                        remove_back(&arr);
-                    }
-                }
-                display(&arr);
                 break;
             case 3:
                 break;
