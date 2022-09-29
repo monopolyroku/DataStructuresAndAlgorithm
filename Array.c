@@ -175,15 +175,20 @@ int main(void) {
             printf("2 - Remove array elements.\n");
             printf("3 - Exit program...\n");
             printf("DISPLAY ARRAY:\n");
-            printf("Index:      |");
-            for(int i=0; i<(int)arr.size; ++i) {
-                printf(" %d |", i);
+            if(arr.size > 0) {
+                printf("Index:      |");
+                for(int i=0; i<(int)arr.size; ++i) {
+                    printf(" %d |", i);
+                }
+                printf("\n");
+                printf("Element(s): |");
+                // Display array list
+                for(int i=0; i<(int)arr.size; ++i) {
+                    peek(&arr, i);
+                }
             }
-            printf("\n");
-            printf("Element(s): |");
-            // Display array list
-            for(int i=0; i<(int)arr.size; ++i) {
-                peek(&arr, i);
+            else {
+                printf("Array is empty!\n");
             }
             printf("\nPlease choose one of the above actions (e.g.: 1): \n");
             scanf("%d", &mode);
