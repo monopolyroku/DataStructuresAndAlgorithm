@@ -39,7 +39,7 @@ typedef struct Array {
     // based on the max size of unsigned char
     int data[256];
     // front position: first element in the array
-    // unsigned char because we don't want negative as array index does not
+    // unsigned char because we don't want negative, as array index does not
     // contain negative, so by using 2's complement, it will "change" the
     // first position of the array element, which is usually 0, to be negative
     // then based on that negative position, the subscript will calculate
@@ -70,8 +70,9 @@ void insert_front(Array *array, int val) {
     }
     // when there exists an element in the array, fpos will shift leftwards
     // by a space due to the decrement, which will make fpos become -ve, but
-    // since it is unsigned char, fpos/index will move to the back of the
-    // array address and store that position as the first element
+    // since unsigned char cannot contain negative which is signed, fpos/index
+    // will move to the back of the array address and store that position as
+    // the first element
     else if(array->data[array->fpos] != 0) {
         array->fpos--;
     }
