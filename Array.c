@@ -198,7 +198,7 @@ int main(void) {
             case 1:
                 printf("\nPlease insert at least one integer to the array list!\n");
         }
-        printf("\nPlease choose one of the above actions (e.g.: 1), then press CTRL + Enter: \n");
+        printf("\nPlease choose one of the above execution mode (e.g.: 1), then press CTRL + Enter: \n");
         scanf("%d", &mode);
         switch(mode) {
             case 1:
