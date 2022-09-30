@@ -1,3 +1,24 @@
+'''
+@file       main.py
+@author     Wong Qi En 
+@par        SIT email: 2101737@sit.singaporetech.edu.sg
+@par        Course: RSE2203
+@par        Assignment 1, Q5
+@date       30-09-2022
+@brief
+    This file contains the code for a Stable Selection Sort algorithm in python.
+    The functions include:
+    - stableSelectionSort
+                sorts the unsorted array using a Stable Selection Sort algorithm
+
+'''
+
+#@function   stableSelectionSort
+#@abstract   during each iteration, the smallest item from the unsorted partition will be moved to the sorted partition
+#@abstract   as this is a stable variation, a sort key is added to ensure that the equilvalent elements retain their relative positions
+#@param      list_a - takes in an unsorted list in function main 
+#@returns    list_a
+
 def stableSelectionSort(list_a):
     # Assume last value is the max
     indexing_len = range(0, len(list_a)-1)
