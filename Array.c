@@ -201,7 +201,7 @@ int main(void) {
             case 1:
                 printf("Enter an integer to insert into the array:\n");
                 scanf("%d", &val);
-                printf("Do you want to insert to the front or back of the array?\n");
+                printf("Do you want to insert the integer to the front or back of the array?\n");
                 printf("1 - Front\n");
                 printf("2 - Back\n");
                 scanf("%d", &action);
@@ -219,7 +219,7 @@ int main(void) {
                 if(arr.size > 0) {
                     printf("Enter number of integers to remove: \n");
                     scanf("%d", &loopCnt);
-                    printf("Do you want to remove from the front or back of the array?\n");
+                    printf("Do you want to remove the integer from the front or back of the array?\n");
                     printf("1) Front\n");
                     printf("2) Back\n");
                     scanf("%d", &action);
