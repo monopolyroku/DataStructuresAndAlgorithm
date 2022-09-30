@@ -163,39 +163,43 @@ int main(void) {
     arr.bpos = 0;
 
     // User input
-    int loopCnt = 0, val = 0, mode = 1, modeChck = false, action = 0;
+    int loopCnt = 0, val = 0, mode = 0, action = 0, err_msg = false;
     while(mode != 3) {
         // Clear output screen/ terminal
         system("clear");
-        if(modeChck == true) {
-            printf("---------------\n");
-            printf("USER INPUT MODE\n");
-            printf("---------------\n");
-            printf("1 - Insert array elements.\n");
-            printf("2 - Remove array elements.\n");
-            printf("3 - Exit program...\n");
-            printf("DISPLAY ARRAY:\n");
-            if(arr.size > 0) {
-                printf("Index:      |");
-                for(int i=0; i<(int)arr.size; ++i) {
-                    printf(" %d |", i);
-                }
-                printf("\n");
-                printf("Element(s): |");
-                // Display array list
-                for(int i=0; i<(int)arr.size; ++i) {
-                    peek(&arr, i);
-                }
+        printf("---------------\n");
+        printf("USER INPUT MODE\n");
+        printf("---------------\n");
+        printf("1 - Insert array elements.\n");
+        printf("2 - Remove array elements.\n");
+        printf("3 - Exit program...\n");
+        printf("DISPLAY ARRAY:\n"); 
+        if(arr.size > 0) {
+            printf("Index:      |");
+            for(int i=0; i<(int)arr.size; ++i) {
+                printf(" %d |", i);
             }
-            else {
-                printf("Array is empty!\n");
+            printf("\n");
+            printf("Element(s): |");
+            // Display array list
+            for(int i=0; i<(int)arr.size; ++i) {
+                peek(&arr, i);
             }
-            printf("\nPlease choose one of the above actions (e.g.: 1): \n");
-            scanf("%d", &mode);
+            printf("\n");
         }
         else {
-            mode = 1;
+            printf("Array is empty!\n");
+            if(err_msg) {
+                printf("\nERROR: Please insert at least 1 integer into the array list!\n");
+                err_msg = false;
+            }
         }
+        switch(err_msg) {
+            case 1:
+                printf("\nPlease insert at least one integer to the array list!\n");
+        }
+        printf("\nPlease choose one of the above actions (e.g.: 1), then press CTRL + Enter: \n");
+        scanf("%d", &mode);
         switch(mode) {
             case 1:
                 printf("Enter an integer to insert into the array:\n");
@@ -213,7 +217,6 @@ int main(void) {
                 else if(2 == action) {
                     insert_back(&arr, val);
                 }
-                modeChck = true;
                 break;
             case 2:
                 if(arr.size > 0) {
@@ -236,6 +239,9 @@ int main(void) {
                             remove_back(&arr);
                         }
                     }
+                }
+                else {
+                    err_msg = true;
                 }
                 break;
             case 3:
