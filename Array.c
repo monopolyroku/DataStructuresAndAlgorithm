@@ -116,10 +116,8 @@ void insert_back(Array *array, int val) {
 ****************************************************************************
 ***/
 void remove_front(Array *array) {
-    if(array->size != 0) {
-        array->fpos++;
-        array->size--;
-    }
+    array->fpos++;
+    array->size--;
 }
 
 /*!*************************************************************************
@@ -132,10 +130,8 @@ void remove_front(Array *array) {
 ****************************************************************************
 ***/
 void remove_back(Array *array) {
-    if(array->size != 0) {
-        array->bpos--;
-        array->size--;
-    }
+    array->bpos--;
+    array->size--;
 }
 
 /*!*************************************************************************
