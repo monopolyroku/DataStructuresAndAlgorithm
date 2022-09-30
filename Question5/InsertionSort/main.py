@@ -6,7 +6,7 @@
 @par        Assignment 1, Q5
 @date       30-09-2022
 @brief
-    This file contains the code for a Quick Sort algorithm in python.
+    This file contains the code for a Insertion Sort algorithm in python.
     The functions include:
     - insertionSort
         sorts the unsorted array using insertion sort algorithm
