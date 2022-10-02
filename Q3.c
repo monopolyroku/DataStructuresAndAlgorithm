@@ -1,6 +1,6 @@
 /*!*************************************************************************
 ****
-\file       Array.c
+\file       Q3.c
 \author     Teo Xin Yi
 \par        SIT email: 2102226@sit.singaporetech.edu.sg
 \par        Course: RSE2203
