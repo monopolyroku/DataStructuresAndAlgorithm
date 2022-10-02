@@ -1,3 +1,27 @@
+/**************************************************************************
+****
+\file       Q2.c
+\author     Muhd Syafiq Bin Idros
+\par        SIT email: 2102814@sit.singaporetech.edu.sg
+\par        Course: RSE2203
+\par        Assignment 1, Q2
+\date       01-10-2022
+\brief
+    This file contains the code for a programme that will take an algebric input
+    and check if the parathensis,curly braces,braces are balanced. Where for every
+    opening bracket there is a closing bracket and for a pair of brackets the closing
+    bracket must come after the opening bracket.
+
+    The functions include:
+    - pushone, pushtwo, pushthree
+        Pushes the character in a stack & increments the top index.
+    - pop
+        Removes the character in a stack & decrements the top index.
+    - isEmpty
+        Checks if the top index for the stacks if it is -1.
+****************************************************************************
+***/
+
 #include <stdio.h>
 #include <string.h>
  
