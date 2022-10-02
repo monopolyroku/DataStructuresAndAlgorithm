@@ -1,6 +1,6 @@
 /*!*************************************************************************
 ****
-\file Palindrome.c
+\file Q4.c
 \author Elson Tan Jun Hao
 \par email: 2102036@sit.singaporetech.edu.sg
 \par Course: RSE2203 - Data Structures and Algorithms
